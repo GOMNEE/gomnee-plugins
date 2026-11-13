@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "gomnee": {
+      "type": "http",
+      "url": "https://app.gomnee.com/mcp",
+      "oauth": {
+        "clientId": "bDYFGFOhT18zHAfb",
+        "callbackPort": 5556
+      }
+    }
+  }
+}

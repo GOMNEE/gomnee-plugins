@@ -1,0 +1,16 @@
+{
+  "name": "gomnee",
+  "description": "Gomnee's Claude plugin marketplace.",
+  "owner": {
+    "name": "Gomnee",
+    "url": "https://gomnee.com"
+  },
+  "plugins": [
+    {
+      "name": "gomnee",
+      "source": "./plugin",
+      "description": "Use your chosen intelligence with Gomnee's versioned business context and retained evidence: research, plan, propose grounded Articles and audit a website, with exact human review.",
+      "category": "SEO"
+    }
+  ]
+}

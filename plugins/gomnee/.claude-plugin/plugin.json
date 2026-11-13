@@ -1,0 +1,21 @@
+{
+  "name": "gomnee",
+  "displayName": "Gomnee",
+  "version": "0.1.5",
+  "description": "Use your chosen intelligence with Gomnee's accepted Strategy and retained evidence: plan content, propose Articles, audit websites and manage committed campaign-site revisions through explicit Owner commands.",
+  "author": {
+    "name": "Gomnee",
+    "url": "https://gomnee.com"
+  },
+  "homepage": "https://gomnee.com",
+  "repository": "https://github.com/fedewedreamlabsio/gomnee",
+  "keywords": [
+    "seo",
+    "content-strategy",
+    "articles",
+    "search-console",
+    "site-audit",
+    "editorial",
+    "campaign-sites"
+  ]
+}
