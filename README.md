@@ -21,7 +21,8 @@ The first Gomnee request opens the Gomnee sign-in and consent page. What the plu
 | `plugins/gomnee/assets/icon.png` | The listing icon for both hosts |
 | `.claude-plugin/marketplace.json` | The Claude marketplace entry that points at the plugin |
 | `scripts/package.py` | Builds the ChatGPT archive from `plugins/gomnee/` |
-| `scripts/test_*.py` | Checks for the archive and for this repository's layout |
+| `contract/gomnee-server.json` | A copy of the server's contract: the tool names it can register and the Article house targets |
+| `scripts/test_*.py` | Checks for the archive, this repository's layout and the skill text against the server contract |
 
 The skills and references are one source for both hosts. Only the manifests differ.
 
@@ -34,6 +35,10 @@ claude plugin validate ./plugins/gomnee --profile directory
 ```
 
 The archive is reproducible: the same source gives the same bytes. It contains the portable manifests, the license, the third-party notices, the icon and the skill and reference Markdown. The build checks the ChatGPT listing fields against the directory's limits, and its receipt lists under `missingForReview` any listing URL a review still needs. It leaves out the Claude-only connection settings. The build makes no network request and submits nothing.
+
+## Staying in step with the server
+
+Skills may only name tools the Gomnee server provides, and the house targets they quote must equal the server's. `contract/gomnee-server.json` is a copy of `apps/web/tests/unit/plugin-contract.json` from the Gomnee product repository. When that file changes there, replace the copy here and fix any skill the tests report.
 
 ## Releasing a change
 
