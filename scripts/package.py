@@ -1,4 +1,4 @@
-"""Build a portable Gomnee plugin from the shared, reviewed skill source.
+"""Build the portable Gomnee plugin archive from plugins/gomnee.
 
 This command performs no network access, host installation or publication.
 Use --schema-directory to additionally validate against downloaded official
@@ -22,9 +22,10 @@ SCHEMA_DIGESTS = {
     "plugin.schema.json": "0a4aad95ce337878ad38802ebf0daa3fde76abe3f65400c86bcbb1ec0b3ab883",
     "mcp.schema.json": "6539175bfcdf43085855183e86da40ea94b166547a72b47ae9a0a390516d3acb",
 }
-ROOT_FILES = ("plugin.json", "mcp.json", "THIRD_PARTY_NOTICES.md")
+ROOT_FILES = ("plugin.json", "mcp.json", "LICENSE", "THIRD_PARTY_NOTICES.md")
 SHARED_DIRECTORIES = ("skills", "references")
-IDENTITY_FIELDS = ("name", "version", "description", "author", "homepage", "keywords")
+IDENTITY_FIELDS = ("name", "version", "description", "author", "homepage", "repository",
+                   "license", "keywords")
 SECRET_PATTERNS = (
     rb"-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----",
     rb"\b(?:ghp_|github_pat_|xox[baprs]-|sk-proj-)[A-Za-z0-9_-]{20,}",
@@ -173,7 +174,7 @@ def build_archive(plugin_root, output, schema_directory=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--plugin-root", type=Path,
-                        default=Path(__file__).resolve().parents[2] / "plugin")
+                        default=Path(__file__).resolve().parents[1] / "plugins" / "gomnee")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--schema-directory", type=Path)
     parser.add_argument("--receipt", type=Path)

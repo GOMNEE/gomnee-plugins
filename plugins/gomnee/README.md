@@ -32,8 +32,7 @@ independent human review → explicit original-item update workflow. It reuses
 existing `gomnee:article:read/propose/approve/publish` permissions through the
 owner-approved article-management amendment and requires operator activation.
 The current external contract supports
-qualified Markdown sources. See the
-[CMS client workflow](../docs/operations/external-mcp-clients.md#manage-imported-cms-articles).
+qualified Markdown sources.
 
 ## Shared research
 
@@ -58,13 +57,12 @@ for `gomnee:sites:read`, `gomnee:sites:manage` and `gomnee:sites:publish`. Publi
 and restore require an explicit Owner instruction for the exact deployment.
 Website tracking is separately verified and enabled; no native lead form or
 visitor identity is collected. If the tools are absent, report that hosting MCP
-has not been activated rather than requesting unrelated permissions. See the
-[client runbook](../docs/operations/external-mcp-clients.md).
+has not been activated rather than requesting unrelated permissions.
 
 ## Install in Claude Code
 
 ```bash
-claude plugin marketplace add fedewedreamlabsio/gomnee
+claude plugin marketplace add fedewedreamlabsio/gomnee-plugins
 claude plugin install gomnee@gomnee
 ```
 
@@ -127,6 +125,12 @@ readiness.
 
 Documentation and contact: https://gomnee.com
 
+- [Privacy policy](https://gomnee.com/privacy)
+- [Terms of service](https://gomnee.com/terms)
+
+## License
+
+The plugin is released under the [Apache License 2.0](LICENSE).
 Third-party material is acknowledged in `THIRD_PARTY_NOTICES.md`.
 
 ## Search Console data

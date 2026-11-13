@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 from zipfile import ZipFile
 
-from scripts.plugin.package import build_archive, collect_source, validate_official_schemas
+from package import build_archive, collect_source, validate_official_schemas
 
 
 class PortablePluginPackageTests(unittest.TestCase):
@@ -14,7 +14,7 @@ class PortablePluginPackageTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
         self.source = self.root / "plugin"
-        shutil.copytree(Path(__file__).resolve().parents[2] / "plugin", self.source)
+        shutil.copytree(Path(__file__).resolve().parents[1] / "plugins" / "gomnee", self.source)
 
     def mutate_json(self, relative, update):
         path = self.source / relative
@@ -34,6 +34,8 @@ class PortablePluginPackageTests(unittest.TestCase):
             paths = archive.namelist()
             self.assertIn("skills/gomnee-start/SKILL.md", paths)
             self.assertIn("references/mcp-workflow.md", paths)
+            self.assertIn("LICENSE", paths)
+            self.assertNotIn("README.md", paths)
             self.assertNotIn(".mcp.json", paths)
             self.assertNotIn(".claude-plugin/plugin.json", paths)
             self.assertNotIn(".beads/issues.jsonl", paths)

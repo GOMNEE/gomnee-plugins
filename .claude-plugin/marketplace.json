@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "gomnee",
-      "source": "./plugin",
+      "source": "./plugins/gomnee",
       "description": "Use your chosen intelligence with Gomnee's versioned business context and retained evidence: research, plan, propose grounded Articles and audit a website, with exact human review.",
       "category": "SEO"
     }
