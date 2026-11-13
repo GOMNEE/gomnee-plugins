@@ -77,3 +77,12 @@ does not establish that these tools or scopes are active in the hosted plugin.
 Report the saved effect and current state plainly. Preserve exact returned
 Article/Asset links and reasons. Superseded pending proposals are historical
 work; they do not remain an actionable approval queue or become approved.
+
+## Adding, copying and editing planned items
+
+To add a planned item by hand, or to copy one to another eligible keyword of
+the same Demand, submit a Planner proposal for that allocation with your own
+title, angle and intent. These are new Assets: the owner's approval settings
+decide whether they apply or wait for review. There is no direct create or copy
+command. A planned item's title, angle and intent cannot be changed through the
+connector; ask the owner to edit them in Calendar.

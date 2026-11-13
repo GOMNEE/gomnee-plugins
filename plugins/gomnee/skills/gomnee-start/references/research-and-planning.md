@@ -107,6 +107,21 @@ route to the Article skill. Submission, a target date or a plan allocation does
 not schedule automatic publication. Research interpretation can finish as
 read-only advice when that is what the person requested.
 
+## Change an accepted item's title, angle or intent
+
+When the advertised `gomnee_submit_planner_proposal` accepts
+`submissionVersion: 3`, propose the edit with a
+`planner_asset_edit_proposal_v1` document: for each item its `assetId`, the
+`assetRevisionId` read from `gomnee_get_planned_asset_lifecycle` as
+`expectedAssetRevisionId`, and the full new title, angle and intent. Keywords,
+evidence and the date are not part of an edit. Explain the change and cite the
+evidence for it. It is a proposal: the owner's Article ideas setting decides
+whether it applies, and a pending one is read with
+`gomnee_read_planner_proposal` and the same version. A refusal names its reason,
+such as an item that already has an Article (propose the change on the Article)
+or one a person last wrote (they edit it in Calendar). Do not cancel and
+re-add an item to change its words.
+
 ## Change an accepted item's date or lifecycle
 
 Use `gomnee_get_planned_asset_lifecycle` and

@@ -152,7 +152,9 @@ proposal. Do not resend the full Article just to change its cover.
    references, and submit. The receipt's server-owned quality report names
    mechanical failures and unassessed editorial checks. Fix actionable findings
    through a fresh proposal, preserving the reviewed brief; use
-   `gomnee_get_quality_report` for the saved revision. Do not declare a model or
+   `gomnee_get_quality_report` for the saved revision. Its `scorecard` says how
+   many checks are left before approval and which need a change, which need the
+   reviewer's call and which are already fine. Do not declare a model or
    human review completed yourself. First-hand evidence must be actual output
    with date/environment; an untested tutorial needs public docs-only disclosure
    and an authorized exact reasoned exception. Check the saved application status and hand
