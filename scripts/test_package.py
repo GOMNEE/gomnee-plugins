@@ -35,6 +35,7 @@ class PortablePluginPackageTests(unittest.TestCase):
             self.assertIn("skills/gomnee-start/SKILL.md", paths)
             self.assertIn("references/mcp-workflow.md", paths)
             self.assertIn("LICENSE", paths)
+            self.assertIn("assets/icon.png", paths)
             self.assertNotIn("README.md", paths)
             self.assertNotIn(".mcp.json", paths)
             self.assertNotIn(".claude-plugin/plugin.json", paths)
@@ -44,6 +45,7 @@ class PortablePluginPackageTests(unittest.TestCase):
             for name in paths:
                 self.assertEqual(archive.read(name), (self.source / name).read_bytes())
         self.assertEqual(first["schemas"], [])
+        self.assertEqual(first["missingForReview"], ["supportURL"])
         self.assertFalse(first["hostQualified"])
         self.assertFalse(first["published"])
 
@@ -51,6 +53,38 @@ class PortablePluginPackageTests(unittest.TestCase):
         self.mutate_json("mcp.json", lambda value: value["mcpServers"]["gomnee"].update(
             {"oauth": {"clientId": "loopback-client", "callbackPort": 5556}}
         ))
+        with self.assertRaisesRegex(ValueError, "only the public HTTPS endpoint"):
+            collect_source(self.source)
+
+    def interface(self, update):
+        self.mutate_json("plugin.json",
+                         lambda value: update(value["extensions"]["com.openai"]["interface"]))
+
+    def test_rejects_listing_text_over_the_directory_limit(self):
+        self.interface(lambda value: value.update({"shortDescription": "x" * 31}))
+        with self.assertRaisesRegex(ValueError, "over 30 characters: shortDescription"):
+            collect_source(self.source)
+
+    def test_rejects_listing_url_that_is_not_plain_https(self):
+        self.interface(lambda value: value.update({"supportURL": "http://gomnee.com/support"}))
+        with self.assertRaisesRegex(ValueError, "plain HTTPS: supportURL"):
+            collect_source(self.source)
+
+    def test_rejects_listing_icon_that_is_missing_or_not_square(self):
+        self.interface(lambda value: value.update({"logo": "./assets/missing.png"}))
+        with self.assertRaisesRegex(ValueError, "icon is not packaged: logo"):
+            collect_source(self.source)
+        self.interface(lambda value: value.update({"logo": "./assets/icon.png"}))
+        icon = self.source / "assets/icon.png"
+        data = bytearray(icon.read_bytes())
+        data[16:20] = (512).to_bytes(4, "big")
+        icon.write_bytes(bytes(data))
+        with self.assertRaisesRegex(ValueError, "square PNG"):
+            collect_source(self.source)
+
+    def test_rejects_client_credentials_in_the_hosted_connection(self):
+        self.mutate_json("mcp.json", lambda value: value["mcpServers"]["gomnee"]["extensions"][
+            "com.openai"]["auth"]["client"].update({"clientId": "static-client"}))
         with self.assertRaisesRegex(ValueError, "only the public HTTPS endpoint"):
             collect_source(self.source)
 
@@ -100,7 +134,7 @@ class PortablePluginPackageTests(unittest.TestCase):
 
     def test_rejects_tampered_official_schema_before_optional_validator(self):
         (self.root / "plugin.schema.json").write_text('{"$id":"https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"}')
-        files, _ = collect_source(self.source)
+        files, _, _ = collect_source(self.source)
         with self.assertRaisesRegex(ValueError, "Official schema bytes differ"):
             validate_official_schemas(files, self.root)
 

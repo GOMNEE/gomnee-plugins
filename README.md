@@ -18,6 +18,7 @@ The first Gomnee request opens the Gomnee sign-in and consent page. What the plu
 | Path | What it is |
 | --- | --- |
 | `plugins/gomnee/` | The plugin: skills, shared references, the Claude manifest (`.claude-plugin/plugin.json`, `.mcp.json`) and the portable manifest used for ChatGPT (`plugin.json`, `mcp.json`) |
+| `plugins/gomnee/assets/icon.png` | The listing icon for both hosts |
 | `.claude-plugin/marketplace.json` | The Claude marketplace entry that points at the plugin |
 | `scripts/package.py` | Builds the ChatGPT archive from `plugins/gomnee/` |
 | `scripts/test_*.py` | Checks for the archive and for this repository's layout |
@@ -32,7 +33,7 @@ python3 scripts/package.py --output dist/gomnee.zip --receipt dist/gomnee.receip
 claude plugin validate ./plugins/gomnee --profile directory
 ```
 
-The archive is reproducible: the same source gives the same bytes. It contains the portable manifests, the license, the third-party notices and the skill and reference Markdown. It leaves out the Claude-only connection settings. The build makes no network request and submits nothing.
+The archive is reproducible: the same source gives the same bytes. It contains the portable manifests, the license, the third-party notices, the icon and the skill and reference Markdown. The build checks the ChatGPT listing fields against the directory's limits, and its receipt lists under `missingForReview` any listing URL a review still needs. It leaves out the Claude-only connection settings. The build makes no network request and submits nothing.
 
 ## Releasing a change
 

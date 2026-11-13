@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "gomnee",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Use your chosen intelligence with Gomnee's accepted Strategy and retained evidence: plan content, propose Articles, audit websites and manage committed campaign-site revisions through explicit Owner commands.",
   "author": {
     "name": "Gomnee",
@@ -21,6 +21,24 @@
   ],
   "extensions": {
     "com.openai": {
+      "interface": {
+        "displayName": "Gomnee",
+        "shortDescription": "Plan and write SEO content",
+        "longDescription": "Gomnee is an organic-growth workspace for founders and marketing teams. It keeps your accepted company context, content strategy, Google Search Console data and saved research in one place.\n\nWith Gomnee connected you can ask what to publish next, explore search performance and saved keyword research, plan content against your strategy, and brief, draft and revise articles grounded in retained sources. You can also audit a website for technical SEO and readiness.\n\nThe assistant proposes and you decide. Strategy, plan and article changes are saved as proposals for your review in Gomnee. Approving an article and publishing it each need their own permission and an explicit request.\n\nRequires a Gomnee account with a workspace connected to Google Search Console. Gomnee only reads and changes the workspaces and permissions you approve when you connect.",
+        "developerName": "Gomnee",
+        "category": "Business & Operations",
+        "websiteURL": "https://gomnee.com",
+        "privacyPolicyURL": "https://gomnee.com/privacy",
+        "termsOfServiceURL": "https://gomnee.com/terms",
+        "defaultPrompt": [
+          "What should I publish next in Gomnee?",
+          "Write the next planned Gomnee article.",
+          "Audit my site for Gomnee."
+        ],
+        "brandColor": "#2F36C6",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
       "onboardingSkill": "./skills/gomnee-start/SKILL.md"
     }
   }

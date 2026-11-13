@@ -26,6 +26,18 @@ ROOT_FILES = ("plugin.json", "mcp.json", "LICENSE", "THIRD_PARTY_NOTICES.md")
 SHARED_DIRECTORIES = ("skills", "references")
 IDENTITY_FIELDS = ("name", "version", "description", "author", "homepage", "repository",
                    "license", "keywords")
+ONBOARDING_SKILL = "./skills/gomnee-start/SKILL.md"
+MCP_AUTH = {"type": "oauth", "client": {"mode": "cimd"}}
+# Listing limits from OpenAI's submission reference (manifest fields, listing metadata).
+CATEGORIES = ("Productivity", "Creativity", "Developer Tools", "Business & Operations",
+              "Data & Analytics", "Communication", "Education & Research", "Security",
+              "Finance", "Healthcare", "Travel", "Entertainment", "Other")
+TEXT_LIMITS = {"displayName": 30, "shortDescription": 30, "longDescription": 4000,
+               "developerName": 80}
+URL_FIELDS = ("websiteURL", "supportURL", "privacyPolicyURL", "termsOfServiceURL")
+ICON_FIELDS = ("composerIcon", "logo")
+INTERFACE_FIELDS = {*TEXT_LIMITS, "category", *URL_FIELDS, "defaultPrompt", "brandColor",
+                    *ICON_FIELDS}
 SECRET_PATTERNS = (
     rb"-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----",
     rb"\b(?:ghp_|github_pat_|xox[baprs]-|sk-proj-)[A-Za-z0-9_-]{20,}",
@@ -51,6 +63,49 @@ def read_source(root, relative):
     return data
 
 
+def png_size(data, relative):
+    require(data[:8] == b"\x89PNG\r\n\x1a\n" and data[12:16] == b"IHDR",
+            f"Icon is not a PNG: {relative}")
+    return int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
+
+
+def check_listing(extension, files):
+    require(set(extension) == {"interface", "onboardingSkill"},
+            "Unreviewed host extension")
+    require(extension["onboardingSkill"] == ONBOARDING_SKILL, "Unreviewed onboarding skill")
+    require(ONBOARDING_SKILL[2:] in files, "Onboarding skill is not packaged")
+    interface = extension["interface"]
+    require(set(interface) <= INTERFACE_FIELDS, "Unreviewed listing field")
+    for field, limit in TEXT_LIMITS.items():
+        value = interface.get(field)
+        require(isinstance(value, str) and 0 < len(value) <= limit,
+                f"Listing text missing or over {limit} characters: {field}")
+    require(interface.get("category") in CATEGORIES, "Unknown listing category")
+    for field in URL_FIELDS:
+        if field in interface:
+            url = urlsplit(interface[field])
+            require(url.scheme == "https" and url.netloc and "@" not in url.netloc,
+                    f"Listing URL must be plain HTTPS: {field}")
+    prompts = interface.get("defaultPrompt", [])
+    require(isinstance(prompts, list) and len(prompts) <= 3 and len(set(prompts)) == len(prompts)
+            and all(isinstance(prompt, str) and 0 < len(prompt) <= 128 and "@" not in prompt
+                    for prompt in prompts),
+            "Starter prompts must be at most three unique strings of 128 characters")
+    if "brandColor" in interface:
+        require(re.fullmatch(r"#[0-9A-Fa-f]{6}", interface["brandColor"]) is not None,
+                "Brand color must be #RRGGBB")
+    for field in ICON_FIELDS:
+        path = interface.get(field)
+        require(isinstance(path, str) and path.startswith("./assets/") and path[2:] in files,
+                f"Listing icon is not packaged: {field}")
+        width, height = png_size(files[path[2:]], path)
+        require(width == height and 48 <= width <= 4096 and len(files[path[2:]]) <= 5 * 1024 * 1024,
+                f"Listing icon must be a square PNG of 48 to 4096 pixels: {field}")
+    # Each of these is required before an MCP review; a missing one is reported, not refused,
+    # so the archive can be built while the page it points to is being prepared.
+    return [field for field in URL_FIELDS if field not in interface]
+
+
 def collect_source(plugin_root):
     root = Path(plugin_root).resolve()
     files = {name: read_source(root, name) for name in ROOT_FILES}
@@ -66,6 +121,14 @@ def collect_source(plugin_root):
                 continue
             require(source.suffix == ".md", f"Unreviewed shared file type: {relative}")
             files[relative] = read_source(root, relative)
+    assets = root / "assets"
+    if assets.exists():
+        require(assets.is_dir() and not assets.is_symlink(), "Unexpected assets entry")
+        for source in sorted(assets.iterdir()):
+            relative = source.relative_to(root).as_posix()
+            require(source.is_file() and not source.is_symlink() and source.suffix == ".png"
+                    and not source.name.startswith("."), f"Unreviewed asset: {relative}")
+            files[relative] = source.read_bytes()
 
     manifest = json.loads(files["plugin.json"])
     claude = json.loads(read_source(root, ".claude-plugin/plugin.json"))
@@ -77,13 +140,12 @@ def collect_source(plugin_root):
     require(manifest["name"] == "gomnee", "Unexpected plugin identity")
     require(re.fullmatch(r"\d+\.\d+\.\d+", manifest["version"]) is not None,
             "Plugin version must be explicit semantic version")
-    onboarding = "./skills/gomnee-start/SKILL.md"
-    require(manifest["extensions"] == {"com.openai": {"onboardingSkill": onboarding}},
-            "Unreviewed host extension or onboarding skill")
-    require(onboarding[2:] in files, "Onboarding skill is not packaged")
+    require(set(manifest["extensions"]) == {"com.openai"}, "Unreviewed host extension")
+    missing_listing = check_listing(manifest["extensions"]["com.openai"], files)
     connector = json.loads(files["mcp.json"])
-    require(connector == {"$schema": MCP_SCHEMA,
-                          "mcpServers": {"gomnee": {"type": "streamable-http", "url": MCP_URL}}},
+    require(connector == {"$schema": MCP_SCHEMA, "mcpServers": {"gomnee": {
+        "type": "streamable-http", "url": MCP_URL,
+        "extensions": {"com.openai": {"auth": MCP_AUTH}}}}},
             "Portable MCP must contain only the public HTTPS endpoint and transport")
 
     skills = sorted((root / "skills").iterdir())
@@ -113,7 +175,7 @@ def collect_source(plugin_root):
                     f"Reference escapes plugin: {relative}")
             target_relative = resolved.resolve().relative_to(root).as_posix()
             require(target_relative in files, f"Reference is not packaged: {relative}: {target}")
-    return dict(sorted(files.items())), manifest
+    return dict(sorted(files.items())), manifest, missing_listing
 
 
 def validate_official_schemas(files, schema_directory):
@@ -139,7 +201,7 @@ def validate_official_schemas(files, schema_directory):
 
 
 def build_archive(plugin_root, output, schema_directory=None):
-    files, manifest = collect_source(plugin_root)
+    files, manifest, missing_listing = collect_source(plugin_root)
     schemas = validate_official_schemas(files, schema_directory) if schema_directory else []
     output = Path(output).resolve()
     require(not output.is_relative_to(Path(plugin_root).resolve()),
@@ -165,6 +227,7 @@ def build_archive(plugin_root, output, schema_directory=None):
         "schemas": schemas,
         "files": [{"path": name, "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data)}
                   for name, data in files.items()],
+        "missingForReview": missing_listing,
         "hostQualified": False,
         "submitted": False,
         "published": False,
