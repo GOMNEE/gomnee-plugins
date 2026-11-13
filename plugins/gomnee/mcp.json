@@ -3,7 +3,17 @@
   "mcpServers": {
     "gomnee": {
       "type": "streamable-http",
-      "url": "https://app.gomnee.com/mcp"
+      "url": "https://app.gomnee.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "cimd"
+            }
+          }
+        }
+      }
     }
   }
 }
