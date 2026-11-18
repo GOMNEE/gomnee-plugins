@@ -296,3 +296,26 @@ its own reason and the retained evidence that supports it. The owner reviews it
 in Brand → Business Map; nothing applies until they save it. Read the outcome
 with `gomnee_read_company_context_proposal`. Do not propose removing or
 relinking entities: say so to the owner instead.
+
+## Proposing that existing content answers a Demand
+
+Many Demands are already answered by a page the company has, not by a new
+guide. A directory answers "find an agency in Milan" with its Milan page, not
+with an Article. Say so instead of planning a guide for it.
+
+Read `gomnee_list_website_pages` for the site's pages and
+`gomnee_list_demand_answers` for what already answers each Demand. Then call
+`gomnee_submit_demand_answer_proposal` once per Demand with one target:
+
+- one page: `{kind:"page", url}`, an address from the page list;
+- a page family: `{kind:"page_family", pattern, name}`, where the pattern is a
+  path with `*` for exactly one segment, such as `/agenzie-seo/*`.
+
+Give the role (`primary` owns the Demand, `supporting` helps) and one to six
+evidence items, strongest first: Search Console rows that show the query
+landing on the page, then the format of the results page, then the page's
+stated purpose, then its data. The owner approves, asks for changes or rejects
+in Strategy; nothing applies before that. Read the outcome and any note with
+`gomnee_read_demand_answer_proposal`. Once a primary answer is approved, the
+Planner context lists the Demand under `answeredDemands`: do not plan a guide
+for it and do not report it as a Strategy gap.
