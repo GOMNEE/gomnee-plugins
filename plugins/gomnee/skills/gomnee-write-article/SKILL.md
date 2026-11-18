@@ -197,6 +197,14 @@ automatic policy and requested task permit it; follow
 [editorial-standard.md](references/editorial-standard.md). Missing evidence stays
 unassessed even after a named permitted exception.
 
+When the review packet carries `reviewLayers`, the workspace reviews in three
+layers. Lint is the gate: fix each error you can in a new revision, using its
+`locations`; the person may instead waive an error marked `waivable` when they
+sign. Warnings never block. The `editorialScorecard` is an independent editor's
+guidance and never gates approval. Policy approval then takes no
+`editorialReview` and never waives an error. Never sign, waive or write a waiver
+reason for the person.
+
 Only when publication was requested, use an advertised `gomnee_publish_article`
 with separate publication consent, the exact approved revision/current row
 version and matching create/update operation. Keep one command ID for identical

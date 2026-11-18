@@ -159,6 +159,13 @@ row/revision. This is an external-agent/workspace-policy decision, never a human
 attestation. Evidence status remains unchanged and non-overrideable checks still
 block. Manual policy still requires the independent human review path.
 
+When the exact review packet carries `reviewLayers`, lint replaces the six
+criteria as the gate, and the independent editorial scorecard is guidance that
+never gates approval. Omit `editorialReview`: policy approves only when lint has
+no open error and never waives one. Fix errors in a new revision. Only the
+person may waive a `waivable` error, with a reason, when they sign in the
+review card or in Gomnee.
+
 Only when the person requested publication, use an advertised
 `gomnee_publish_article` with separate `gomnee:article:publish` consent, the exact
 approved revision/current row version, and `create` or `update` as appropriate.
