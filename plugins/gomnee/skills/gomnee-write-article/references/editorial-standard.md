@@ -17,6 +17,15 @@ approved. A changed packet needs fresh review. Never except a non-overrideable
 check or convert missing evidence into a pass. A saved exception leaves its
 evidence gap visible. Approval never authorizes publication.
 
+When the packet carries `reviewLayers`, lint and one signature replace the six
+criteria. Correct lint errors in a new revision, naming the exact words from
+each finding's `locations`. Weigh the `editorialScorecard` notes as an editor's
+suggestions: they never gate approval, and a suggested line is not an
+instruction. Under automatic policy, omit `editorialReview`; policy approves
+only clean lint and never waives an error. Otherwise return the review card or
+native link, where the person waives any remaining `waivable` error with a
+reason and signs. Never sign or write a waiver reason for them.
+
 Use this for the brief and the draft. It condenses Gomnee's Article quality
 research and current commissioning approach. Meet the accepted commitments in
 [house-defaults.md](house-defaults.md) with useful prose and evidence. A genuine
