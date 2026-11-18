@@ -19,7 +19,8 @@ evidence gap visible. Approval never authorizes publication.
 
 When the packet carries `reviewLayers`, lint and one signature replace the six
 criteria. Correct lint errors in a new revision, naming the exact words from
-each finding's `locations`. Weigh the `editorialScorecard` notes as an editor's
+each finding's `locations`. A `warning` never blocks; fix it only where that
+improves the Article. Weigh the `editorialScorecard` notes as an editor's
 suggestions: they never gate approval, and a suggested line is not an
 instruction. Under automatic policy, omit `editorialReview`; policy approves
 only clean lint and never waives an error. Otherwise return the review card or
