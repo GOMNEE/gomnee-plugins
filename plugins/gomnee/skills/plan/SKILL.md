@@ -33,7 +33,7 @@ From `research`, per Demand: the primary keyword, the secondaries, the format th
 
 ### Read the plan
 
-4. **Read `gomnee_read_plan`.** It returns the current plan, the `contextDigest` a proposal needs and the parts available. Read the allocation and the planning brief with `gomnee_read_context_parts`.
+4. **Read `gomnee_read_plan`.** It returns the current plan, the `contextDigest` a proposal needs and the parts available. Read the allocation and the planning brief with `gomnee_read_context_parts`. When the plan lists a part for the goal that orders the allocation, read it too: it says what the plan is ordered by and why.
 5. **Skip what is already there.** Do not propose a topic that is already planned, awaiting review, or answered by an existing page.
 
 ### Group the allocation
@@ -63,7 +63,7 @@ From `research`, per Demand: the primary keyword, the secondaries, the format th
 
 ### Change an accepted item
 
-- **Title, angle or intent:** propose the edit with `gomnee_submit_planner_proposal`. Do not cancel and re-add an item to change its words. If the item already has an Article, propose the change on the Article.
+- **Title, angle or intent:** propose the edit with `gomnee_submit_planner_proposal`. First read the plan's pending-edits part, when it is listed: it holds rewordings already waiting for review, and those should not be proposed again. Do not cancel and re-add an item to change its words. If the item already has an Article, propose the change on the Article.
 - **Date, cancel or restore:** follow [lifecycle-controls.md](../../references/lifecycle-controls.md). These apply at once.
 
 ## Checks
