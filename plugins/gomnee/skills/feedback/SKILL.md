@@ -7,7 +7,7 @@ description: Report a problem or a missing capability in Gomnee in a form the Go
 
 Agents meet Gomnee's rough edges before people do. Each one written down once, with the exact call and answer, saves everyone else the same detour.
 
-This skill writes a report for the person to send to Gomnee. It changes nothing in Gomnee and sends nothing by itself.
+This skill writes a report for the person to send to Gomnee at `support@gomnee.com`. It changes nothing in Gomnee and sends nothing by itself.
 
 ## When to report
 
@@ -40,7 +40,7 @@ Do not report your own mistakes, a correct refusal with a clear message, or anyt
 
 4. **Write the report** in the format below. Facts only: the call, the answer, the date.
 5. **Say what you did instead,** and whether it worked.
-6. **Show the report to the person** and ask them to send it to their Gomnee contact. When you have a working folder, also append it to `gomnee-feedback.md` there, so reports from one session stay together.
+6. **Show the report to the person** and ask them to email it to `support@gomnee.com`. Give it as one block they can copy, with a subject line: "Gomnee feedback: <the one line>". When you have a working folder, also append it to `gomnee-feedback.md` there, so reports from one session stay together.
 7. **Carry on** with the task when a way around exists. Tell the person at once when the problem blocks the work.
 
 ## Report format
@@ -79,12 +79,12 @@ Rules for the text:
 
 ## What the person decides
 
-- Whether to send the report, and to whom.
+- Whether to send the report.
 - Whether a blocking problem stops the work.
 
 ## Do not
 
 - Do not spend money or submit anything to reproduce a problem.
 - Do not retry a failed paid job with a new operation ID to see what happens.
-- Do not send the report anywhere yourself.
+- Do not send the report anywhere yourself, even when you have an email tool. The person sends it.
 - Do not mix tasks about the person's site into the report.
