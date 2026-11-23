@@ -12,10 +12,10 @@ A plugin that brings a sign-in connection is listed as two paired entries with t
 | One-line description | 200 characters | Plan and write search content from your own strategy: review your business map, research keywords, plan articles and take them from brief to review, with every decision left to you. |
 | Server address | | `https://app.gomnee.com/mcp` |
 | Categories | 1 to 5 | Marketing; Content; SEO (choose from the portal's list) |
-| Privacy policy | | `https://gomnee.com/privacy` (needs the update below) |
-| Terms | | `https://gomnee.com/terms` |
-| Documentation | public by publish date | pending: no page yet |
-| Support contact | | pending: no page yet |
+| Privacy policy | | `https://gomnee.com/privacy`, with a new section at `#ai-assistants` (prepared, not live) |
+| Terms | | `https://gomnee.com/terms`, with a new section on use through an assistant (prepared, not live) |
+| Documentation | public by publish date | `https://gomnee.com/docs/assistants` (prepared, not live) |
+| Support contact | | `support@gomnee.com`, page `https://gomnee.com/support`; security reports to `security@gomnee.com` (prepared, not live) |
 | Icon | | `plugins/gomnee/assets/icon.png` |
 
 ### Description (2,000 characters at most)
@@ -35,7 +35,7 @@ What you can ask for:
 
 Approving an article and publishing it are separate steps that Claude takes only when you ask, each under its own permission. New research uses your plan's research allowance and is always quoted first.
 
-Requires a Gomnee account with a workspace connected to Google Search Console. You choose the permissions Claude may use when you sign in, and you can revoke them at any time.
+Requires a Gomnee account with a workspace connected to Google Search Console. You choose the permissions Claude may use when you sign in, and you can disconnect at any time.
 
 ### Example requests (at least three working ones are required)
 
@@ -78,8 +78,10 @@ Three to five PNG images, at least 1,000 pixels wide, cropped to the card, each 
 
 | Item | Owner |
 | --- | --- |
-| Documentation page and support contact on gomnee.com | Marketing site |
-| Privacy policy update for the connection | Marketing site, approved by the owner |
+| Documentation, support, privacy and terms pages: prepared on a branch of the marketing site on 2026-11-23, to go live unlinked and not indexed once merged and deployed | Owner merges and deploys |
+| The mailboxes `support@gomnee.com` and `security@gomnee.com` exist and are read | Owner |
+| Privacy and terms wording approved | Owner |
+| Add `supportURL` to `plugins/gomnee/plugin.json` once the support page is live | Plugin |
 | Reviewer account and demo workspace (see [reviewer.md](reviewer.md)) | Owner |
 | One full run of the skills in a real Claude install | Owner |
 | Screenshots of the review card | After the install |
