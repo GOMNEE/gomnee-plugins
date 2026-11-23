@@ -21,6 +21,17 @@ class RepositoryLayoutTests(unittest.TestCase):
         manifest = json.loads((PLUGIN / ".claude-plugin/plugin.json").read_text())
         self.assertEqual(manifest["license"], "Apache-2.0")
 
+    def test_claude_manifest_has_only_keys_the_app_recognises(self):
+        # The Claude app strips other top-level keys on sync and warns about each.
+        # The directory finds the icon at assets/icon.png and the privacy policy
+        # through the README's link, so neither needs a manifest key.
+        manifest = json.loads((PLUGIN / ".claude-plugin/plugin.json").read_text())
+        self.assertLessEqual(set(manifest), {"name", "displayName", "version", "description",
+                                             "author", "homepage", "repository", "license",
+                                             "keywords"})
+        self.assertTrue((PLUGIN / "assets/icon.png").is_file())
+        self.assertIn("(https://gomnee.com/privacy)", (PLUGIN / "README.md").read_text())
+
     def test_plugin_readme_links_stay_inside_the_plugin(self):
         readme = (PLUGIN / "README.md").read_text()
         for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", readme):
