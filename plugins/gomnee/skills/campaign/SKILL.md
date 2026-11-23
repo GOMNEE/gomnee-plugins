@@ -1,6 +1,6 @@
 ---
-name: gomnee-campaign-site
-description: Create or improve a customer-owned campaign-page repository, then use available Gomnee site capabilities to preview and explicitly publish an exact committed version with optional network measurement.
+name: campaign
+description: Build or improve a campaign page or supporting website in the customer's own repository, then preview it and publish an exact version through Gomnee hosting. Use for "build a campaign page", "a landing page for this offer", "preview my site", "publish this version", "restore the previous version", or tracking for a supporting site. Needs Gomnee hosting to be switched on for the workspace.
 ---
 
 # Gomnee campaign sites

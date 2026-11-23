@@ -1,6 +1,6 @@
 # Repair saved Article work
 
-Use the connected tool definitions and the [MCP workflow](../../../references/mcp-workflow.md).
+Use the connected tool definitions and [Working with Gomnee](../../../references/working-with-gomnee.md).
 Continue the person's authorized work from its saved state. A correction saves
 a new proposal; the existing proposal and human decisions retain their history.
 

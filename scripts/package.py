@@ -26,7 +26,7 @@ ROOT_FILES = ("plugin.json", "mcp.json", "LICENSE", "THIRD_PARTY_NOTICES.md")
 SHARED_DIRECTORIES = ("skills", "references")
 IDENTITY_FIELDS = ("name", "version", "description", "author", "homepage", "repository",
                    "license", "keywords")
-ONBOARDING_SKILL = "./skills/gomnee-start/SKILL.md"
+ONBOARDING_SKILL = "./skills/start/SKILL.md"
 MCP_AUTH = {"type": "oauth", "client": {"mode": "cimd"}}
 # Listing limits from OpenAI's submission reference (manifest fields, listing metadata).
 CATEGORIES = ("Productivity", "Creativity", "Developer Tools", "Business & Operations",

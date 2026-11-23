@@ -59,7 +59,7 @@ class SkillContractTests(unittest.TestCase):
 
     def test_house_targets_equal_the_server_values(self):
         defaults = CONTRACT["articleEditorialDefaults"]
-        rows = (PLUGIN / "skills/gomnee-write-article/references/house-defaults.md").read_text().split("\n")
+        rows = (PLUGIN / "skills/article/references/house-defaults.md").read_text().split("\n")
         for label, keys in HOUSE_TARGETS.items():
             row = next((line for line in rows
                         if len(line.split("|")) > 1 and line.split("|")[1].strip() == label), None)

@@ -8,9 +8,9 @@ standards; no file is copied verbatim.
 
 - Source: https://github.com/searchfit/searchfit-seo
 - License: MIT
-- Adapted in: `skills/gomnee-write-article/references/on-page.md`,
+- Adapted in: `skills/article/references/on-page.md`,
   `localization.md`, `internal-links.md`;
-  `skills/gomnee-site-audit/references/technical-seo-craft.md`
+  `skills/audit/references/technical-seo-craft.md`
 
 ```
 MIT License
@@ -40,7 +40,7 @@ SOFTWARE.
 
 - Source: Anthropic marketing plugin (`content-creation` skill)
 - License: Apache License 2.0 — https://www.apache.org/licenses/LICENSE-2.0
-- Adapted in: `skills/gomnee-write-article/references/editorial-standard.md`
+- Adapted in: `skills/article/references/editorial-standard.md`
   (headline and opening guidance)
 - Changes: rewritten and reduced to blog-article guidance within Gomnee's
   editorial standard.

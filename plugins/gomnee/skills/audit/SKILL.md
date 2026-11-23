@@ -1,6 +1,6 @@
 ---
-name: gomnee-site-audit
-description: Audit a website against Gomnee's standards — whether Gomnee can host it, publish Articles to it and measure it, and how healthy its SEO is. Use when onboarding a new site to Gomnee, when the user asks "is my site ready for Gomnee", for an SEO or technical SEO audit, or to check a blog, Article template, structured data, sitemap, robots or Search Console setup.
+name: audit
+description: Audit a website against Gomnee's standards, covering whether Gomnee can host it, publish Articles to it and measure it, and how healthy its SEO is. Use for "audit my site", "is my site ready for Gomnee", an SEO or technical SEO audit, or to check a blog, Article template, structured data, sitemap, robots or Search Console setup.
 ---
 
 # Audit a site against Gomnee's standards
@@ -23,10 +23,9 @@ connection probe, candidate deployment and publication read-back are what
 qualify a site. Never state that a site is "qualified", "approved" or "ready
 to publish" on the strength of this audit alone.
 
-Use only Gomnee tools advertised by the connected host. A local catalog or skill
-name does not establish availability. See the
-[MCP workflow](../../references/mcp-workflow.md) for discovery and connection
-limits. Without the required read capability, use public/repository evidence
+Use only the Gomnee tools this connection lists. See
+[Working with Gomnee](../../references/working-with-gomnee.md) for the shared
+rules. Without the required read capability, use public/repository evidence
 and mark the inaccessible saved state unknown.
 
 ## Inputs
