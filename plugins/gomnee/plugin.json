@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "gomnee",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Plan and write search content with Gomnee: review your business map, set a strategy, research keywords, plan content and take articles from brief to review, with every decision left to you.",
   "author": {
     "name": "Gomnee",

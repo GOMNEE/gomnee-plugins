@@ -31,7 +31,7 @@ Never use an image whose source you cannot name.
 1. **Decide the role of each image:** one hero, and inline images tied to their sections.
 2. **Confirm rights with the person, for each image.** Ask: is it owned or licensed, and what credit line, if any? Do not decide this yourself.
 3. **Prepare the file** as PNG, JPEG or WebP. Convert large images to WebP to keep them small.
-4. **Host it** with `gomnee_host_image`, following its description for sending the file. If you cannot send the file, the tool returns a signed-in upload link for the person; call again with the same command ID to get the saved address.
+4. **Host it** with `gomnee_host_image`, following its description for sending the file. When you can run commands where the file is, as in Claude Code or a cloud session, use the upload link the description offers: your own command sends the file, so the image never passes through your messages. Never type a large image out as base64. If you cannot send the file, or a cloud session's network blocks the upload, the tool returns a signed-in upload link for the person; call again with the same command ID to get the saved address.
 5. **Tell the person the image is now public.** Hosting does not change, approve or publish the Article, but anyone can read the address from this moment.
 6. **Place the image in the draft's media** with the address exactly as returned, the verified dimensions from the hosting result, alt text, an optional caption and the credit. A screenshot used as evidence is also referenced from the draft's verification excerpts.
 7. **Submit the change** with `gomnee_submit_article_proposal`. Changes to media go through the whole-draft proposal.
