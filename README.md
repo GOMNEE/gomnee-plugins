@@ -21,6 +21,7 @@ The first Gomnee request opens the Gomnee sign-in and consent page. What the plu
 | `plugins/gomnee/assets/icon.png` | The listing icon for both hosts |
 | `.claude-plugin/marketplace.json` | The Claude marketplace entry that points at the plugin |
 | `scripts/package.py` | Builds the ChatGPT archive from `plugins/gomnee/` |
+| `listing/` | Drafted directory listing data and the reviewer account checklist. Nothing here is submitted |
 | `contract/gomnee-server.json` | A copy of the server's contract: the tool names it can register and the Article house targets |
 | `scripts/test_*.py` | Checks for the archive, this repository's layout and the skill text against the server contract |
 
