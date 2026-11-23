@@ -17,7 +17,7 @@ Read [Working with Gomnee](../../references/working-with-gomnee.md) first.
 
 1. Find the workspace with `gomnee_list_workspaces`.
 2. Read `gomnee_get_workspace_visibility` for waiting decisions, running work and connection health.
-3. Read `gomnee_read_strategy`. Its `outline` lists every Territory with its active Demands.
+3. Read `gomnee_read_strategy`. Its `outline` lists every Territory with its active Demands. When it reports a business-map review that is waiting, tell the person and give them its review link before anything else: Strategy work waits on that decision.
 4. Choose the path:
 
    | State | Path |
