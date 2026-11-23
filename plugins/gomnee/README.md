@@ -20,7 +20,7 @@ Your assistant does the thinking and writes proposals. Gomnee keeps the accepted
 | `article` | Takes a planned item through brief, draft, images and review, and edits existing articles. |
 | `audit` | Audits a website for Gomnee readiness and SEO health, with evidence for every finding. |
 | `campaign` | Builds a campaign page in your own repository and previews and publishes it through Gomnee hosting, where hosting is switched on. |
-| `feedback` | Writes up a problem or a missing capability in Gomnee for you to send to the Gomnee team. |
+| `feedback` | Writes up a problem or a missing capability in Gomnee for you to email to `support@gomnee.com`. |
 
 The usual order is start, strategy, research, plan, article. Ask in your own words, for example "Where do I begin with Gomnee?", "Research keywords for these questions" or "Write the next planned article".
 
