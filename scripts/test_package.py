@@ -32,8 +32,8 @@ class PortablePluginPackageTests(unittest.TestCase):
         self.assertEqual(first["sha256"], second["sha256"])
         with ZipFile(first["archive"]) as archive:
             paths = archive.namelist()
-            self.assertIn("skills/gomnee-start/SKILL.md", paths)
-            self.assertIn("references/mcp-workflow.md", paths)
+            self.assertIn("skills/start/SKILL.md", paths)
+            self.assertIn("references/working-with-gomnee.md", paths)
             self.assertIn("LICENSE", paths)
             self.assertIn("assets/icon.png", paths)
             self.assertNotIn("README.md", paths)
@@ -97,13 +97,13 @@ class PortablePluginPackageTests(unittest.TestCase):
             collect_source(self.source)
 
     def test_rejects_reference_to_source_excluded_from_archive(self):
-        path = self.source / "references/mcp-workflow.md"
+        path = self.source / "references/working-with-gomnee.md"
         path.write_text(path.read_text() + "\n[Installation](../README.md)\n")
         with self.assertRaisesRegex(ValueError, "Reference is not packaged"):
             collect_source(self.source)
 
     def test_rejects_reference_escaping_plugin(self):
-        path = self.source / "references/mcp-workflow.md"
+        path = self.source / "references/working-with-gomnee.md"
         path.write_text(path.read_text() + "\n[Internal](../../AGENTS.md)\n")
         with self.assertRaisesRegex(ValueError, "Reference escapes plugin"):
             collect_source(self.source)
@@ -115,7 +115,7 @@ class PortablePluginPackageTests(unittest.TestCase):
             collect_source(self.source)
 
     def test_rejects_symlink_even_when_it_points_inside_plugin(self):
-        (self.source / "references/linked.md").symlink_to("mcp-workflow.md")
+        (self.source / "references/linked.md").symlink_to("working-with-gomnee.md")
         with self.assertRaisesRegex(ValueError, "Symlink excluded"):
             collect_source(self.source)
 

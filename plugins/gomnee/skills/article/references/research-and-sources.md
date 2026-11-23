@@ -9,16 +9,12 @@ this Article.
 
 ## Shared evidence before Article work
 
-Follow the shared [research workflow](../../../references/shared-research.md).
-Read retained Evidence and exact investigation versions before collecting again;
-use the advertised shared collection quote/start/status/result controls for new
-work. SEO, internal and external evidence are available to Strategy and Planner
-as well as Article work. With `submissionVersion: 2`, selected citations/findings
-travel in `researchUsage` and remain separate from accepted Article claim support.
-Use only the advertised versioned support adapter for workspace public-source
-receipts; never pass their IDs as legacy `publicSourceReads`. After applying a
-brief, read fresh Article context before drafting from its saved basis. The
-Article-only tools below are a fallback when they are actually advertised.
+Read retained Evidence and saved investigations before collecting again; the
+`research` skill covers quotes, collection and reading. SEO, internal and
+external evidence are available to Strategy and planning as well as Article
+work. Research findings carried into a proposal stay separate from the
+Article's accepted claim support. After a brief is applied, read the Article
+again before drafting from its saved basis.
 
 ## Connected company knowledge
 
@@ -42,16 +38,15 @@ the exact Company Context/map identifiers and versions. A developer's starred
 repositories establish neither company authorship nor use or endorsement.
 GitHub reads support UTF-8 Markdown, reStructuredText, plain text, AsciiDoc and Python, plus extensionless README, CHANGELOG, LICENSE, AUTHORS and CONTRIBUTING. Python is inspected as evidence; it is never executed. Unsupported formats need a supported file, not reconnection. Connections and source selection remain human actions in Gomnee.
 
-When the refreshed tools advertise `contextVersion: 2`, use that explicit version
-for private GitHub knowledge. Its map returns currently permitted entries, the
-original `mapVersionId`/`mapDigest`, and a separate `projectionDigest`; use the
-original map identity for source browsing and capture. Historical identities do
+For private GitHub knowledge, the source map returns the currently permitted
+entries with the original map identity and a separate projection digest; use
+the original map identity for source browsing and capture. Historical identities do
 not restore a removed root or revoked connection. Ask the person to select the
 private repository in Gomnee if it is absent; never substitute an unselected URL.
 
 Private discovery/browsing needs explicit private-source consent. Capturing a
 fresh read also needs research-work consent and configured collection. Supply one
-UUID `commandId` per exact @2 capture; repeat that command only with identical
+UUID `commandId` per exact capture; repeat that command only with identical
 inputs to recover the original receipt. The tagged result contains `receipt`;
 carry its `readId` and `digest`, not the outer response. The original default
 adapter stays public-only. A failed consent or configuration check is a bounded
@@ -125,20 +120,14 @@ publishes an Article.
 
 ## Saved creator inspiration
 
-When advertised, `gomnee_list_inspiration_feed_v4` browses retained social posts
-and `gomnee_list_saved_inspiration_v3` discovers the person's exact saved
-references. Ordinary posts need not meet a winner threshold. Start feed review
-with `limit: 3` and follow `nextCursor`. Inspect one post or its dated observations
-with `gomnee_read_inspiration_post_v2` / `gomnee_list_inspiration_observations_v2` only
-when relevant; reads never acquire fresh source data.
-Use an item only when the person explicitly selects it as context
-for the current discussion or run. Read it with `gomnee_read_saved_inspiration_v4`
-and its exact ID/digest. Kind post returns the pinned observation; kind comparison
-preserves historical comparison evidence and original references. Keep saved and
-observation dates, source-native text/media/metric meaning, nullable values and
-coverage. Preserve the exact 20-post baseline when a qualified comparison exists.
-Older comparison-shaped v2 reads remain compatible; use them when those are the
-only advertised tools, with their original `nextOffset` paging.
+When the connection lists the inspiration tools, the feed read browses retained
+posts from followed accounts and websites, and the saved-items read finds the
+person's exact saved references. Ordinary posts need not meet a winner threshold.
+Start with a small page and follow the returned cursor. Inspect one post or its
+dated observations only when relevant; reads never acquire fresh source data.
+Use an item only when the person explicitly selects it as context for the
+current discussion. Keep saved and observation dates, the source's own text,
+media and metric meaning, missing values and coverage.
 
 Popularity can inform a format or question hypothesis. It cannot establish
 reader demand, Strategy fit, a factual claim or permission to copy a creator.

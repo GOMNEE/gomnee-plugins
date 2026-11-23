@@ -84,5 +84,6 @@ To add a planned item by hand, or to copy one to another eligible keyword of
 the same Demand, submit a Planner proposal for that allocation with your own
 title, angle and intent. These are new Assets: the owner's approval settings
 decide whether they apply or wait for review. There is no direct create or copy
-command. A planned item's title, angle and intent cannot be changed through the
-connector; ask the owner to edit them in Calendar.
+command. To change a planned item's title, angle or intent, propose the edit
+with `gomnee_submit_planner_proposal`; the owner's settings decide whether it
+applies. If the item already has an Article, propose the change on the Article.

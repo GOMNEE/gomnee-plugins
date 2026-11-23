@@ -17,15 +17,13 @@ credentials in chat.
    public immediately; it does not change the Article. Read that same command
    until it returns its committed receipt. Do not invent upload links, file
    references or secret values, or ask the person to paste base64.
-3. **Submit only the cover change.** Use the advertised
-   `submissionVersion: 3`, the current owning context digest and one submission
-   UUID. The proposal is `schemaVersion: "article_agent_proposal_v3"`,
-   `targetKind: "article_revision"`, the exact `baseRevisionId` and
-   `baseRevisionDigest`, `coverChange: {action: "replace", source:
-{hostCommandId, imageId, digest}, alt}`, and `explanation`. Copy the three
-   source identifiers from that exact hosted receipt; the digest identifies
-   the normalized PNG, not the local source design. Write useful alternative
-   text. Do not supply a replacement Article body, infer image rights or use
+3. **Submit only the cover change.** Use the cover form that
+   `gomnee_submit_article_proposal` describes, with the current context digest
+   and one submission UUID. It names the exact base revision, the cover change
+   with the hosted image as its source, alternative text and an explanation.
+   Copy the source identifiers from that exact hosted receipt; the digest
+   identifies the normalized PNG, not the local source design. Write useful
+   alternative text. Do not supply a replacement Article body, infer image rights or use
    private Creative/Chat IDs as a hosting receipt.
 4. **Return the exact Owner review.** Read the saved receipt and give its
    authenticated review link. The person sees the exact cover and alternative
