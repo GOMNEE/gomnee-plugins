@@ -44,6 +44,15 @@ class SkillContractTests(unittest.TestCase):
                           if name not in known})
         self.assertEqual(unknown, [])
 
+    def test_listing_drafts_name_only_tools_the_server_provides(self):
+        # The example and test requests in listing/ name tools for reviewers.
+        known = set(CONTRACT["toolNames"])
+        unknown = sorted({f"{path.relative_to(ROOT)}: {name}"
+                          for path in sorted((ROOT / "listing").glob("*.md"))
+                          for name in re.findall(r"\bgomnee_[a-z0-9_]+\b", path.read_text())
+                          if name not in known})
+        self.assertEqual(unknown, [])
+
     def test_every_skill_has_a_matching_name_and_a_real_description(self):
         for skill in SKILLS:
             frontmatter = re.match(r"\A---\n([\s\S]*?)\n---\n", (skill / "SKILL.md").read_text())

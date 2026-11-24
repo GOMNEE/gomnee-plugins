@@ -12,11 +12,13 @@ A plugin that brings a sign-in connection is listed as two paired entries with t
 | One-line description | 200 characters | Plan and write search content from your own strategy: review your business map, research keywords, plan articles and take them from brief to review, with every decision left to you. |
 | Server address | | `https://app.gomnee.com/mcp` |
 | Categories | 1 to 5 | Marketing; Content; SEO (choose from the portal's list) |
-| Privacy policy | | `https://gomnee.com/privacy`, with a new section at `#ai-assistants` (prepared, not live) |
-| Terms | | `https://gomnee.com/terms`, with a new section on use through an assistant (prepared, not live) |
-| Documentation | public by publish date | `https://gomnee.com/docs/assistants` (prepared, not live) |
-| Support contact | | `support@gomnee.com`, page `https://gomnee.com/support`; security reports to `security@gomnee.com` (prepared, not live) |
+| Privacy policy | | `https://gomnee.com/privacy`, with the section "AI assistants connected to Gomnee" at `#ai-assistants`. Live, effective 2026-11-23 |
+| Terms | | `https://gomnee.com/terms`, with the section "Using Gomnee through an AI assistant". Live, effective 2026-11-23 |
+| Documentation | public by publish date | `https://gomnee.com/docs/assistants`. Live and open without sign-in, but unlisted for now (see below) |
+| Support contact | | `support@gomnee.com`, page `https://gomnee.com/support`; security reports to `security@gomnee.com` and `https://gomnee.com/.well-known/security.txt`. Live, unlisted for now |
 | Icon | | `plugins/gomnee/assets/icon.png` |
+
+The site pages were checked from outside on 2026-11-24: each address answers, the documentation and support pages carry "noindex", and neither is in the sitemap or linked from the homepage. They become listed when the marketing site's `ASSISTANT_PAGES_LISTED` switch is turned on.
 
 ### Description (2,000 characters at most)
 
@@ -58,8 +60,8 @@ Each line is Gomnee's position as understood today. The owner confirms each befo
 | No money transfers | None. Research uses the plan's allowance; nothing is bought or transferred in Claude | |
 | No AI image, video or audio generation | Cover rendering fills a saved template; it does not generate images | That no listed tool generates media |
 | Protection against injected instructions | Tool results mark source text as evidence, never instructions, and writes are proposals a person decides | |
-| No collection of the conversation | Gomnee receives tool requests and the proposals written, not the chat | Matches the privacy policy update |
-| Public documentation | Pending | The documentation page exists |
+| No collection of the conversation | Gomnee receives tool requests and the proposals written, not the chat | The live privacy policy says the same: "Gomnee does not receive or collect your conversation with the assistant." |
+| Public documentation | Live at `https://gomnee.com/docs/assistants` since 2026-11-24 | Whether reviewers need the page listed and indexed, or only reachable |
 
 ### Screenshots of the review card
 
@@ -72,20 +74,30 @@ Three to five PNG images, at least 1,000 pixels wide, cropped to the card, each 
 | Name | `gomnee` (permanent once listed) |
 | Repository | `fedewedreamlabsio/gomnee-plugins`: private during review, public before the listing goes live |
 | Paired connector | The connector listing above, same server address |
-| Validator | `claude plugin validate ./plugins/gomnee --profile directory` reports nothing at 0.2.0 |
+| Validator | `claude plugin validate ./plugins/gomnee --profile directory` passes at 0.2.7. It notes that it takes the privacy policy address from the README: the Claude app rejects that key in the manifest, so it is left out |
+
+## Done
+
+| Item | When |
+| --- | --- |
+| Documentation, support, privacy and terms pages are live on gomnee.com. Checked from outside | 2026-11-24 |
+| Privacy and terms wording approved, and both mailboxes confirmed as live, by the owner. Recorded in the marketing site's pull request 23, not checked from here | 2026-11-23 |
+| The support page is in the ChatGPT listing data (`supportURL` in `plugins/gomnee/plugin.json`); the build reports no missing listing link | 2026-11-24 |
+| The server's tool set is settled for now: 131 tools on production, none with a version number in its name. The server session has paused further tool-list changes | 2026-11-23 |
 
 ## Open before submitting
 
 | Item | Owner |
 | --- | --- |
-| Documentation, support, privacy and terms pages: prepared on a branch of the marketing site on 2026-11-23, to go live unlinked and not indexed once merged and deployed | Owner merges and deploys |
-| The mailboxes `support@gomnee.com` and `security@gomnee.com` exist and are read | Owner |
-| Privacy and terms wording approved | Owner |
-| Add `supportURL` to `plugins/gomnee/plugin.json` once the support page is live | Plugin |
+| Turn on the marketing site's listing switch for the documentation and support pages | Owner, at go-live |
 | Reviewer account and demo workspace (see [reviewer.md](reviewer.md)) | Owner |
 | One full run of the skills in a real Claude install | Owner |
 | Screenshots of the review card | After the install |
-| Check whether the portal accepts the client ID in `plugins/gomnee/.mcp.json`, or wants the address only | Plugin |
-| Every permission the server lists is assigned to Claude's clients | Owner, in the sign-in provider |
-| The server's tool set has settled (old tools removed, inspiration tools renamed) | Server |
+| Check whether the portal accepts the client ID in `plugins/gomnee/.mcp.json`, or wants the address only. It did not stop a privately added plugin from connecting in the Claude app on 2026-11-23 | Plugin |
+| Every permission the server lists is assigned to Claude's clients. A fresh plugin install signed in and listed workspaces on 2026-11-23, which points that way for the Claude app; not checked permission by permission, and not for Claude Code | Owner, in the sign-in provider |
+| Confirm each compliance statement above | Owner |
 | Decision to list while Gomnee is invite-only | Owner |
+
+## Known later changes
+
+The server session plans two more tool changes after its pause, each announced first: removing the version input the connected-source tools still accept, and moving the remaining tools onto shared definitions. After any change, copy the server's contract into `contract/gomnee-server.json`; the checks then report any tool a skill or this folder still names. Once listed, a changed tool name also needs a reviewed listing edit.

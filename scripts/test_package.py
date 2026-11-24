@@ -45,7 +45,7 @@ class PortablePluginPackageTests(unittest.TestCase):
             for name in paths:
                 self.assertEqual(archive.read(name), (self.source / name).read_bytes())
         self.assertEqual(first["schemas"], [])
-        self.assertEqual(first["missingForReview"], ["supportURL"])
+        self.assertEqual(first["missingForReview"], [])
         self.assertFalse(first["hostQualified"])
         self.assertFalse(first["published"])
 
