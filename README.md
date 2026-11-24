@@ -7,7 +7,7 @@ This repository holds exactly what ships. The Gomnee product and its MCP server 
 ## Install in Claude Code
 
 ```bash
-claude plugin marketplace add fedewedreamlabsio/gomnee-plugins
+claude plugin marketplace add GOMNEE/gomnee-plugins
 claude plugin install gomnee@gomnee
 ```
 
