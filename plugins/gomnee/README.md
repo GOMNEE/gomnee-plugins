@@ -26,12 +26,12 @@ The usual order is start, strategy, research, plan, article. Ask in your own wor
 
 ## Install in Claude
 
-In the Claude app: Customize, Plugins, Add marketplace, then enter `fedewedreamlabsio/gomnee-plugins` and install Gomnee.
+In the Claude app: Customize, Plugins, Add marketplace, then enter `GOMNEE/gomnee-plugins` and install Gomnee.
 
 In Claude Code:
 
 ```bash
-claude plugin marketplace add fedewedreamlabsio/gomnee-plugins
+claude plugin marketplace add GOMNEE/gomnee-plugins
 claude plugin install gomnee@gomnee
 ```
 

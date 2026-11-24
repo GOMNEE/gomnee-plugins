@@ -70,7 +70,7 @@ Three to five PNG images, at least 1,000 pixels wide, cropped to the card, each 
 | Field | Value |
 | --- | --- |
 | Name | `gomnee` (permanent once listed) |
-| Repository | `fedewedreamlabsio/gomnee-plugins`: private during review, public before the listing goes live |
+| Repository | `GOMNEE/gomnee-plugins`: public since 2026-11-24 |
 | Paired connector | The connector listing above, same server address |
 | Validator | `claude plugin validate ./plugins/gomnee --profile directory` reports nothing at 0.2.0 |
 
